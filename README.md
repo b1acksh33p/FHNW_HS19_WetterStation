@@ -25,11 +25,12 @@ fhnw-ds-hs2019-weatherstation-api 0.21 | v 0.19 | [GitHub](https://github.com/ma
 
 Nachdem Start des raspberry Pi Terminal öffnen und Betriebssystem auf den neusten Stand bringen:
 
-`sudo apt-get update
-       	sudo apt-get upgrade`
+`sudo apt-get update`   
+`sudo apt-get upgrade`
 
 
-### Tick Stack Installation:
+### Tick (Telegraf, InfluxDB, Chronograf, Kapacitor) Stack Installation:
+
 
 Vor dem Start der Installtion zuerst die Version auf dem raspberry Pi überprüfen. Im Terminal folgenden Befehl im Termianl eingeben:
 
@@ -39,16 +40,23 @@ Folgender Output sollte zu sehen sein:
 
 ![Output](https://i.imgur.com/RwTwNOg.png)
 
+Uns interessiert die Verision und der Name der Version. Hier wäre es "9" und "stretch"
+
+Im nächsten Schritt werden die GPG Schlüssel hinzugefügt   
+`curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -`   
+
+Füge das repository hinzu (**Hinweis: bitte "stretch" mit der eigenen Version ersetzen wenn nötig!**)   
+`echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.lis`
+
+Zum Schluss noch einmal alle Komponenten auf den neusten Stand bringen   
+`sudo apt-get update`
+
+Jetzt kann der Ganze Stack installiert werden   
+`sudo apt-get install telegraf influxdb chronograf kapacitor`
 
 
 
-
-
-
-
-
-
-
+## 
 
 Laden der Daten ist mit crontab erstellt. script lädt automatisch am start
 
