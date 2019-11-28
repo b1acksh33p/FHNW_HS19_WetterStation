@@ -1,13 +1,13 @@
 ## <span style="color:green">**Wetterstation - Anleitung für Aufbau und Inbetriebnahme**
 
 ## Hardware
-### *Hardwarevoraussetzungen:*
+### Hardwarevoraussetzungen:
 
 - Waveshare Display 10.1 inch HDM LCDD (B) (with case)
 - Raspberry Pi 4 Computer
 - SD Karte für OS und Daten (8GB)
 
-### *Zusammenbau Hardware*
+### Zusammenbau Hardware
 
 Um den Monitor und den Raspberry Pi zusammenzubauen nutzten Sie bitte folgenden Link und folgen Sie der Bildanleitung:
 
@@ -15,7 +15,7 @@ Um den Monitor und den Raspberry Pi zusammenzubauen nutzten Sie bitte folgenden 
 
 ## Software
 
-### *Softwarevoraussetzungen:*
+### Softwarevoraussetzungen:
 
  Library  | Version | Link
 :---------|:---------:| ------
@@ -55,8 +55,6 @@ Zum Schluss noch einmal alle Komponenten auf den neusten Stand bringen
 Jetzt kann der ganze Stack installiert werden   
 `sudo apt-get install telegraf influxdb chronograf kapacitor`
 
-
-
 ## Initiales Laden der Daten
 
 Die Influx Datenbank ist im Moment noch leer und kann über die fhnw-ds-hs2019-weatherstation-api befüllt werden.   
@@ -84,35 +82,55 @@ Um sicherzustellen, dass alle Daten automatisch geladen werden, auch nach Neusta
 Folgende Schritte sind dazu nötig:
 
 1. Runterladen des skripts `load_current_weather_data.py`
-2. Directory des Skripts merken
+2. Directory des Skripts merken wo das Skript liegt
 3. Terminal öffnen und `crontab -e` eingeben
 4. Auf die letzte Zeile scrollen und `@reboot /"path to skript"/load_current_weather_data.py` hinzufügen
 5. `Ctrl + x` drücken und Änderungen abspeichern
 
+## Sleep Modus deaktivieren
+Standardmässig wird bei raspberry Pi modellen und Debian Distributionen der "Sleep Modus" nach längerer Inaktivität auf dem Gerät aktiviert. Da es sich beim Wettermonitor um eine Lösung handelt die permanent sichtbar sein muss, sollte der "Sleep Modus" deaktiviert werden. Dazu wie folgt vorgehen:
+
+1. lightdm-Konfiguration im Terminal öffnen `sudo nano /etc/lightdm/lightdm.conf`
+2. In der conf Datei den [Seat:*] Header suchen
+3. Zuunterst folgende Zeile hinzufügen: `xserver-command=X -s 0 -dpms`
+
+Damit sollte sich der Bildschirm nicht mehr automatisch verdunkeln bzw. in den "Sleep Modus" wechseln
+
 ## Zusätzliche Daten in die Datenbank senden
+Falls es sich in Zukunft ergeben würde dass weitere Daten in die Datenbank eingespeist werden, würde dieser Abschnitt dazu dienen. Dabei werden folgende 3 Schritte dokumentiert:   
+
+***Instantiation --> Datenbank erstellen --> Daten an Datenbank senden***
+
+###Instantiation
+Um sich überhaupt mit InfluxDB und der Datenbank verbinden zu können ist es nötig einen "client" zu erwecken bzw. auf englisch. to instantiate.
+
+Die unten aufgeführten 
 
 
-Format
+### Datenbank erstellen
 
-Datenbank erstellen
-
-Client erstellen
-
-Daten laden lassen
-## Benutzeroberfläche starten (Chronograf)
-Um die geladenen Daten zu bearbeiten bzw. in eine grafische Form zu bringen 
+### Daten an Datenbank senden
 
 
-## Chronograf
 
-Laden der Daten ist mit crontab erstellt. script lädt automatisch am start
+Weiterführende Informationen und API Dokumentationen um mit Python zu arbeiten können unter diesem Link gefunden werden   
 
-bildschirm sleep mode:
-Open your lightdm configuration:
+**[Python API Dokumentation](https://influxdb-python.readthedocs.io/en/latest/api-documentation.html)**
 
-sudo nano /etc/lightdm/lightdm.conf
-Anywhere below the [SeatDefaults] header, add:
+## Benutzeroberfläche (Chronograf)
+Um die geladenen Daten zu bearbeiten bzw. in eine grafische Form zu bringen wird nun der Browser gestartet und folgende URL aufgerufen:   
+`localhost:8888`   
 
-xserver-command=X -s 0 -dpms
-This will set your blanking timeout to 0 and turn off your display power management signaling.
+Die eingelesenen Daten können im Menüpunkt "Explore" angeschaut werden und die Queries für die Charts und Grafiken auch. 
+
+Wie Queries geschrieben werden würde den Rahmen dieses Files sprengen, aus diesem Grund wird auf die Dokumentation von InfluxDB gewiesen. Link siehe unten
+
+**[Influx SQL Dokumentation](https://docs.influxdata.com/influxdb/v1.7/query_language/database_management/)**
+
+Um die Queries im Nachgang in eine ansprechende Visualisierung zu bringen, wird im nächsten Schritt am oberen Rand "Visualization" ausgewählt. Dort können dann die ausgewählten Daten aus dem Query in eine ansprechende grafische Formatierung gebracht werden.   
+Wenn der Query und die Visualisierung den Ansprüchen genügt, dann kann das Resulat in ein Dashboard gesendet werden über den Bedienknopf "Send to Dashboard"
+
+Weiterführende Informationen bezüglich Visualisierungen können auf der InfluxDB Dokumentation gefunden werden
+
+**[Chronograf Dokumentation](https://docs.influxdata.com/chronograf/v1.7/)**
 
