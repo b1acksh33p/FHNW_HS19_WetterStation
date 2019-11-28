@@ -101,24 +101,16 @@ Falls es sich in Zukunft ergeben würde dass weitere Daten in die Datenbank eing
 
 ***Instantiation --> Datenbank erstellen --> Daten an Datenbank senden***
 
-###Instantiation
-Um sich überhaupt mit InfluxDB und der Datenbank verbinden zu können ist es nötig einen "client" zu erwecken bzw. auf englisch. to instantiate.
-
-Die unten aufgeführten 
+Standardoperationen sind im Skiprt `new_data_influxdb.py` und dort kommentiert
 
 
-### Datenbank erstellen
-
-### Daten an Datenbank senden
-
-
-
-Weiterführende Informationen und API Dokumentationen um mit Python zu arbeiten können unter diesem Link gefunden werden   
+Weiterführende Informationen und Erklärungen welche nicht im Skript enthalten sind können in der API Dokumentation unter diesem Link gefunden werden:    
 
 **[Python API Dokumentation](https://influxdb-python.readthedocs.io/en/latest/api-documentation.html)**
 
 ## Benutzeroberfläche (Chronograf)
 Um die geladenen Daten zu bearbeiten bzw. in eine grafische Form zu bringen wird nun der Browser gestartet und folgende URL aufgerufen:   
+
 `localhost:8888`   
 
 Die eingelesenen Daten können im Menüpunkt "Explore" angeschaut werden und die Queries für die Charts und Grafiken auch. 
