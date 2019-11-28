@@ -15,7 +15,7 @@ weather.connect_db(config)
 while True:
     try:
         weather.import_latest_data(config)
-        time.sleep(300)
+        time.sleep(600)
     except:
         time.sleep(60)
       
