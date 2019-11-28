@@ -19,7 +19,7 @@ Um den Monitor und den Raspberry Pi zusammenzubauen nutzten Sie bitte folgenden 
 
  Library  | Version | Link
 :---------|:---------:| ------
-fhnw-ds-hs2019-weatherstation-api 0.21 | v 0.19 | [GitHub](https://github.com/markif/WeatherStation_HS2019)
+fhnw-ds-hs2019-weatherstation-api | v 0.21 | [GitHub](https://github.com/markif/WeatherStation_HS2019)
 
 ### System Update:
 
@@ -51,12 +51,31 @@ Füge das repository hinzu (**Hinweis: bitte "stretch" mit der eigenen Version e
 Zum Schluss noch einmal alle Komponenten auf den neusten Stand bringen   
 `sudo apt-get update`
 
-Jetzt kann der Ganze Stack installiert werden   
+Jetzt kann der ganze Stack installiert werden   
 `sudo apt-get install telegraf influxdb chronograf kapacitor`
 
 
 
-## 
+## Initiales Laden der Daten
+
+Die Influx Datenbank ist im Moment noch leer und kann über die fhnw-ds-hs2019-weatherstation-api befüllt werden.   
+Im ersten Schritt werden die historischen Daten geladen. Dazu Terminal öffnen und folgende Befehle eingeben:   
+   
+`mkdir data && cd data`  
+`wget https://raw.githubusercontent.com/markif/WeatherStation_HS2019/master/data/messwerte_mythenquai_2007-2018.csv`  
+`wget https://raw.githubusercontent.com/markif/WeatherStation_HS2019/master/data/`  `messwerte_tiefenbrunnen_2007-2018.csv`  
+`wget https://raw.githubusercontent.com/markif/WeatherStation_HS2019/master/data/messwerte_mythenquai_2019.csv`  
+`wget https://raw.githubusercontent.com/markif/WeatherStation_HS2019/master/data/messwerte_tiefenbrunnen_2019.csv`  
+`cd..` 
+
+Wetter API installieren    
+`sudo pip3 install fhnw_ds_hs2019_weatherstation_api`
+
+
+Für das erste Laden der Daten kann das Skript '
+
+
+
 
 Laden der Daten ist mit crontab erstellt. script lädt automatisch am start
 
