@@ -45,7 +45,8 @@ Uns interessiert die Verision und der Name der Version. Hier wäre es "9" und "s
 Im nächsten Schritt werden die GPG Schlüssel hinzugefügt   
 `curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -`   
 
-Füge das repository hinzu (**Hinweis: bitte "stretch" mit der eigenen Version ersetzen wenn nötig!**)   
+Füge das repository hinzu   
+**Hinweis: bitte "stretch" mit der eigenen Version ersetzen wenn nötig!**   
 `echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.lis`
 
 Zum Schluss noch einmal alle Komponenten auf den neusten Stand bringen   
@@ -72,9 +73,9 @@ Wetter API installieren
 `sudo pip3 install fhnw_ds_hs2019_weatherstation_api`
 
 
-Für das erste Laden der Daten kann das Skript     
+Für das erste Laden der Daten kann folgendes Skript ausgeführt werden     
 `init_load_weather_data.py`   
-ausgeführt werden. Das Skript lädt alle Daten bis zum jetzigen Zeitpunkt.
+Das Skript lädt alle Daten bis zum jetzigen Zeitpunkt.
 
 ## Wiederkehrendes Laden der Daten
 
@@ -86,9 +87,23 @@ Folgende Schritte sind dazu nötig:
 2. Directory des Skripts merken
 3. Terminal öffnen und `crontab -e` eingeben
 4. Auf die letzte Zeile scrollen und `@reboot /"path to skript"/load_current_weather_data.py` hinzufügen
-5. `Ctrl + x`drück und Änderungen abspeichern
+5. `Ctrl + x` drücken und Änderungen abspeichern
+
+## Zusätzliche Daten in die Datenbank senden
 
 
+Format
+
+Datenbank erstellen
+
+Client erstellen
+
+Daten laden lassen
+## Benutzeroberfläche starten (Chronograf)
+Um die geladenen Daten zu bearbeiten bzw. in eine grafische Form zu bringen 
+
+
+## Chronograf
 
 Laden der Daten ist mit crontab erstellt. script lädt automatisch am start
 
