@@ -1,7 +1,6 @@
 import pandas as pd
 from influxdb import InfluxDBClient
-from influxdb import DateFrameClient
-
+from influxdb import DataFrameClient
 
 
 host = 'localhost'
@@ -13,15 +12,14 @@ database = 'demo'
 # This part will be used when planning to work with pandas dataframes
 
 # Pandas: Instantinate connection to Database 
-client = DateFrameClient(host = host,
+client = DataFrameClient(host = host,
                          port = port,
                          username = username,
-                         password = password 
+                         password = password, 
                          database = database)
 
-json_body
 
-# Create new database
+# Create new database. Replace 'demo' with any name you want for the database
 client.create_database('demo')
 
 #JSON: Instantinate connection to Database
