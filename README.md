@@ -1,13 +1,13 @@
 ## <span style="color:green">**Wetterstation - Anleitung für Aufbau und Inbetriebnahme**
 
-## Hardware##
-### *Hardwarevoraussetzungen:*###
+## Hardware
+### *Hardwarevoraussetzungen:*
 
 - Waveshare Display 10.1 inch HDM LCDD (B) (with case)
 - Raspberry Pi 4 Computer
 - SD Karte für OS und Daten (16GB)
 
-### *Zusammenbau Hardware*###
+### *Zusammenbau Hardware*
 
 Um den Monitor und den Raspberry Pi zusammenzubauen nutzten Sie bitte folgenden Link und folgen Sie der Bildanleitung:
 
@@ -15,13 +15,13 @@ Um den Monitor und den Raspberry Pi zusammenzubauen nutzten Sie bitte folgenden 
 
 ## Software
 
-### *Softwarevoraussetzungen:*###
+### *Softwarevoraussetzungen:*
 
  Library  | Version | Link
 :---------|:---------:| ------
 fhnw-ds-hs2019-weatherstation-api 0.21 | v 0.19 | [GitHub](https://github.com/markif/WeatherStation_HS2019)
 
-### Installation:###
+### Installation:
 
 Nachdem ersten Anschliessen an die Stromquelle Terminal starten und Raspberry auf den neusten Stand bringen
 
