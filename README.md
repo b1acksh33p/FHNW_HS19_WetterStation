@@ -21,9 +21,23 @@ Um den Monitor und den Raspberry Pi zusammenzubauen nutzten Sie bitte folgenden 
 :---------|:---------:| ------
 fhnw-ds-hs2019-weatherstation-api 0.21 | v 0.19 | [GitHub](https://github.com/markif/WeatherStation_HS2019)
 
-### Installation:
+### System Update:
 
-Nachdem ersten Anschliessen an die Stromquelle Terminal starten und Raspberry auf den neusten Stand bringen
+Nachdem Start des raspberry Pi Terminal öffnen und Betriebssystem auf den neusten Stand bringen:
+
+`sudo apt-get update
+       	sudo apt-get upgrade`
+
+
+### Tick Stack Installation:
+
+Vor dem Start der Installtion zuerst die Version auf dem raspberry Pi überprüfen. Im Terminal folgenden Befehl im Termianl eingeben:
+
+`car /etc/os-release`
+
+Folgender Output sollte zu sehen sein:
+
+![Output](https://i.imgur.com/RwTwNOg.png)
 
 
 
