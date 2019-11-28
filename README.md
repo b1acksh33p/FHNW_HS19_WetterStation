@@ -36,9 +36,6 @@ Nachdem ersten Anschliessen an die Stromquelle Terminal starten und Raspberry au
 
 
 
-
-
-
 Laden der Daten ist mit crontab erstellt. script lädt automatisch am start
 
 bildschirm sleep mode:
