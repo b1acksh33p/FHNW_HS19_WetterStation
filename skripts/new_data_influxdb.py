@@ -9,28 +9,22 @@ username = 'root'
 password = 'root'
 database = 'demo'
 
-# This part will be used when planning to work with pandas dataframes
-
-# Pandas: Instantinate connection to Database 
+#Instantinate client and establish connection to Database 
 client = DataFrameClient(host = host,
                          port = port,
                          username = username,
                          password = password, 
                          database = database)
 
+#Load Data you want into pandas dataframe
+data = pd.read_csv("name_of_file.csv")
 
-# Create new database. Replace 'demo' with any name you want for the database
+#Create new database. Replace 'demo' with any name you want for the database
 client.create_database('demo')
 
-#JSON: Instantinate connection to Database
-client = InfluxDBClient (host = host,
-                         port = port,
-                         username = username,
-                         password = password 
-                         database = database)
+#Delete database. Replace 'demo' with any name you want for the database
+client.drop_database('demo')
 
 
-#create a new database
-client.create('database')
 
 
