@@ -5,7 +5,7 @@
 
 - Waveshare Display 10.1 inch HDM LCDD (B) (with case)
 - Raspberry Pi 4 Computer
-- SD Karte für OS und Daten (16GB)
+- SD Karte für OS und Daten (8GB)
 
 ### *Zusammenbau Hardware*
 
@@ -72,8 +72,21 @@ Wetter API installieren
 `sudo pip3 install fhnw_ds_hs2019_weatherstation_api`
 
 
-Für das erste Laden der Daten kann das Skript '
+Für das erste Laden der Daten kann das Skript     
+`init_load_weather_data.py`   
+ausgeführt werden. Das Skript lädt alle Daten bis zum jetzigen Zeitpunkt.
 
+## Wiederkehrendes Laden der Daten
+
+Um sicherzustellen, dass alle Daten automatisch geladen werden, auch nach Neustart des System wird ein Skript zur Verfügung gestellt welches automatisch ausgeführt werden sollte durch raspberry Pi   
+
+Folgende Schritte sind dazu nötig:
+
+1. Runterladen des skripts `load_current_weather_data.py`
+2. Directory des Skripts merken
+3. Terminal öffnen und `crontab -e` eingeben
+4. Auf die letzte Zeile scrollen und `@reboot /"path to skript"/load_current_weather_data.py` hinzufügen
+5. `Ctrl + x`drück und Änderungen abspeichern
 
 
 
