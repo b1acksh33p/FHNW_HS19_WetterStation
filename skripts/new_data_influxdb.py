@@ -26,5 +26,17 @@ client.create_database('demo')
 client.drop_database('demo')
 
 
+#Write data to database
+#First make sure the data is correctly transformed
+#1st make sure the timestamp column is in datetime format
+#2nd make sure the timestamp column is set as index
+#Examples:
 
+#Transform timestamp column into datetime format
+data['timestamp'] = pd.to_datetime(data['timestamp'])
 
+#Set timestamp as index
+data = data.set_index('timestamp')
+
+#Once the data is clean and properly aligned it can be sent to Influx DB
+client.write_points(data, 'value X')
